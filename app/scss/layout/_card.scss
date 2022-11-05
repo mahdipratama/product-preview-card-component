@@ -1,0 +1,83 @@
+@use '../utilities/' as u;
+@use '../globals/' as c;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: c.$background-secondary;
+  border-radius: u.rem(10);
+
+  @include u.breakpoint-up(small) {
+    flex-direction: row;
+  }
+
+  &__image {
+    // content: url('/images/image-product-mobile.jpg');
+    background: url('/images/image-product-mobile.jpg') no-repeat top center /
+      cover;
+    border-radius: u.rem(10) u.rem(10) 0 0;
+    min-height: u.rem(240);
+    width: 100%;
+
+    @include u.breakpoint-up(small) {
+      background: url('/images/image-product-desktop.jpg') no-repeat top center /
+        cover;
+      border-radius: u.rem(10) 0 0 u.rem(10);
+      min-width: u.rem(300);
+      min-height: u.rem(450);
+    }
+  }
+
+  &__description {
+    & p:nth-child(3) {
+      margin-bottom: u.rem(28);
+
+      @include u.breakpoint-up(small) {
+        line-height: 1.7;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: u.rem(20);
+
+    & p {
+      display: inline-block;
+      margin: 0;
+      margin-bottom: u.rem(22);
+
+      &:first-child {
+        font-size: u.rem(28);
+        font-family: u.$font-price;
+        color: c.$background-cyan;
+      }
+      &:last-child {
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    gap: u.rem(13);
+    width: 100%;
+    padding: u.rem(15);
+    font-size: u.rem(14);
+    color: #fff;
+    background-color: c.$background-cyan;
+    border: none;
+    border-radius: u.rem(10);
+    transition: all 200ms;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: c.$background-cyan-darker;
+    }
+  }
+}
